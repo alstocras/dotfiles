@@ -1,0 +1,46 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+
+[character]
+success_symbol = '[alstocras ❯](#70a5eb)'
+error_symbol = '[alstocras ❯](#e05f65)'
+
+[package]
+disabled = true
+
+[directory]
+truncation_length = 6
+truncate_to_repo = true
+format = '[$path](#78dba9) '
+
+[git_branch]
+format = '[$symbol$branch](bold #70a5eb) '
+style = ''
+
+[git_status]
+format = '[$all_status$ahead_behind](#b6beca) '
+style = ''
+conflicted = '🏳'
+up_to_date = ''
+untracked = ' '
+stashed = ' '
+modified = ' '
+staged = ' '
+renamed = ' '
+deleted = ' '
+
+[nodejs]
+format = 'via [⬢ $version](bold #74bee9) '
+
+[python]
+format = 'via [🐍 $version](bold #f1cf8a) '
+
+[rust]
+format = 'via [🦀 $version](bold #e05f65) '
+
+[cmd_duration]
+format = '⏱️ [$duration](#4d5768) '
+min_time = 5000
+
+[line_break]
+disabled = false
