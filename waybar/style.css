@@ -52,7 +52,7 @@ window {
   border-radius: 6px;
 }
 
-#cpu, #memory, #temperature, #network, #clock {
+#cpu, #memory, #temperature, #pulseaudio, #network, #clock {
   background: #1a1e23;
   color: #b6beca;
   padding: 2px 8px;
@@ -61,6 +61,10 @@ window {
 }
 
 #temperature.critical {
+  color: #e05f65;
+}
+
+#pulseaudio.muted {
   color: #e05f65;
 }
 

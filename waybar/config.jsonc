@@ -13,7 +13,7 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "cpu", "memory", "temperature", "network", "clock", "custom/power"
+        "cpu", "memory", "temperature", "pulseaudio", "network", "clock", "custom/power"
     ],
     // Modules configuration
      "hyprland/workspaces": {
