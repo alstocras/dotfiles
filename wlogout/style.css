@@ -1,0 +1,27 @@
+window {
+  background-color: #101419;
+  font-family: "JetBrainsMono Nerd Font Mono";
+}
+
+button {
+  background: #13171c;
+  color: #b6beca;
+  border: 2px solid #242931;
+  border-radius: 10px;
+  font-size: 20px;
+  margin: 20px;
+}
+
+button:hover {
+  background: #1a1e23;
+  border: 2px solid #70a5eb;
+  color: #70a5eb;
+  font-size: 22px;
+}
+
+button:focus {
+  background: #70a5eb;
+  border: 2px solid #70a5eb;
+  color: #101419;
+  font-size: 22px;
+}
