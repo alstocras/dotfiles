@@ -1,0 +1,43 @@
+* {
+  font: "JetBrainsMono Nerd Font Mono 14";
+}
+
+window {
+  location: northeast;
+  anchor: northeast;
+  x-offset: -12;
+  y-offset: 36;
+  width: 180px;
+  border: 1px;
+  border-color: #242931;
+  border-radius: 10;
+  background-color: #101419;
+  padding: 6px;
+}
+
+mainbox {
+  spacing: 4px;
+}
+
+inputbar {
+  enabled: false;
+}
+
+listview {
+  lines: 5;
+  columns: 1;
+  spacing: 4px;
+  fixed-height: false;
+}
+
+element {
+  padding: 8px 10px;
+  border-radius: 8;
+  background-color: transparent;
+  text-color: #b6beca;
+}
+
+element selected {
+  background-color: #70a5eb;
+  text-color: #101419;
+}
