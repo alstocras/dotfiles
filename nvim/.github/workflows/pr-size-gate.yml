@@ -1,0 +1,43 @@
+name: PR Size Gate
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  check-size:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Essential to see the difference between branches
+
+      - name: Calculate Diff Size
+        id: diff_size
+        run: |
+          # Fetch main to ensure we have a reference point
+          git fetch origin main --depth=1
+
+          # Get the stats: insertions + deletions
+          # We use 'origin/main...HEAD' to see exactly what the PR is adding
+          RAW_STATS=$(git diff --shortstat origin/main...HEAD)
+          echo "Stats: $RAW_STATS"
+
+          # Extract numbers using sed/awk to handle cases where there are 0 deletions or 0 insertions
+          ADDITIONS=$(echo $RAW_STATS | sed -n 's/.* \([0-9]*\) insertion.*/\1/p' || echo 0)
+          DELETIONS=$(echo $RAW_STATS | sed -n 's/.* \([0-9]*\) deletion.*/\1/p' || echo 0)
+
+          TOTAL=$(( ${ADDITIONS:-0} + ${DELETIONS:-0} ))
+          echo "total_change=$TOTAL" >> $GITHUB_ENV
+          echo "Final count: $TOTAL lines"
+
+      - name: Enforce Limit
+        run: |
+          if [ "${{ env.total_change }}" -gt 500 ]; then
+            echo "ERROR: This PR is too big (${{ env.total_change }} lines)!"
+            echo "Keep it under 500 lines or I'm not looking at it."
+            exit 1
+          else
+            echo "Size is manageable. Good job."
+          fi
