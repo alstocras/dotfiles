@@ -142,7 +142,7 @@
     "network": {
         "format-wifi": " {signalStrength}%",
         "format-ethernet": "",
-        "format-disconnected": "",
+        "format-disconnected": " disconnected",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
