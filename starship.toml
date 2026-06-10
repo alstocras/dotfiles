@@ -33,13 +33,13 @@ deleted = ' '
 format = 'via [⬢ $version](bold #74bee9) '
 
 [python]
-format = 'via [🐍 $version](bold #f1cf8a) '
+format = 'via [python $version](bold #f1cf8a) '
 
 [rust]
-format = 'via [🦀 $version](bold #e05f65) '
+format = 'via [rust $version](bold #e05f65) '
 
 [cmd_duration]
-format = '⏱️ [$duration](#4d5768) '
+format = '[$duration](#4d5768) '
 min_time = 5000
 
 [line_break]
