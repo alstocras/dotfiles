@@ -13,7 +13,7 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "cpu", "memory", "temperature", "pulseaudio", "network", "clock", "custom/power"
+        "cpu", "memory", "temperature", "pulseaudio", "network", "custom/kb_layout", "clock", "custom/power"
     ],
     // Modules configuration
      "hyprland/workspaces": {
@@ -176,6 +176,13 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/kb_layout": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "/home/alstocras/.config/waybar/kb_layout.sh",
+        "tooltip": true,
+        "tooltip-format": "Keyboard Layout ({})"
     },
     "custom/power": {
         "format" : "⏻",
