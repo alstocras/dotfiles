@@ -13,7 +13,7 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "cpu", "memory", "temperature", "pulseaudio", "network", "custom/kb_layout", "clock", "custom/power"
+        "cpu", "memory", "temperature", "pulseaudio", "network", "battery", "custom/kb_layout", "clock", "custom/power"
     ],
     // Modules configuration
      "hyprland/workspaces": {
@@ -116,13 +116,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰃨",
-        "format-plugged": "{capacity}% ",
+        "format": "{icon}{capacity}%",
+        "format-charging": "{icon} {capacity}% ",
+        "format-plugged": "{icon} {capacity}% ",
+        "format-full": "{icon} {capacity}%",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
