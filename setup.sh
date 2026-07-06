@@ -1,18 +1,34 @@
-sudo pacman -S fastfetch
+sudo pacman -Syu fastfetch hypridle hyprland hyprlock hyprpaper kitty nvim swaync waybar wofi
 
-sudo pacman -S hypridle
-sudo pacman -S hyprland
-sudo pacman -S hyprlock
-sudo pacman -S hyprpaper
+#sudo pacman -Syu hypridle
+#sudo pacman -Syu hyprland
+#sudo pacman -Syu hyprlock
+#sudo pacman -Syu hyprpaper
+#
+#sudo pacman -Syu kitty
+#
+#sudo pacman -Syu nvim
+#
+#sudo pacman -Syu spicetify
+#
+#sudo pacman -Syu swaync
+#
+#sudo pacman -Syu waybar
+#
+# sudo pacman -Syu wofi
 
-sudo pacman -S kitty
+ln -sf fastfetch ~/.config
 
-sudo pacman -S nvim
+ln -sf hypr ~/.config
 
-sudo pacman -S spicetify
+ln -sf kitty ~/.config
 
-sudo pacman -S swaync
+ln -sf spicetify ~/.config
 
-sudo pacman -S waybar
+ln -sf nvim ~/.config
 
-sudo pacman -S wofi
+ln -sf swaync ~/.config
+
+ln -sf waybar ~/.config
+
+ln -sf wofi ~/.config
