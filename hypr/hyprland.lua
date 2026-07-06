@@ -8,17 +8,17 @@ local mainMod = "SUPER"
 
 local terminal = "kitty"
 
-local fileManager = "nautilus"
+local fileManager = "kitty && yazi"
 
 local menu = "wofi --show drun"
 
 local browser = "firefox"
 
-local server = "local_var_HOME/minecraft-server/start.sh"
+local server = os.getenv("HOME") .. "/minecraft-server/start.sh"
 
 local ai = "opencode"
 
-local logout = "local_var_HOME/.config/waybar/powermenu.sh"
+local logout = os.getenv("HOME") .. "/.config/waybar/powermenu.sh"
 
 -- quick commands
 
@@ -31,7 +31,7 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit")
 )
 
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "F", hl.dsp.exec_cmd("nautilus"))
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "F", hl.dsp.exec_cmd("kitty -e yazi"))
 
 hl.bind(mainMod .. " + " .. "T", hl.dsp.window.float())
 
@@ -39,13 +39,16 @@ hl.bind(mainMod .. " + " .. "SPACE", hl.dsp.exec_cmd("wofi --show drun"))
 
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "RETURN", hl.dsp.exec_cmd("firefox"))
 
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "S", hl.dsp.exec_cmd("sh local_var_HOME/minecraft-server/start.sh"))
+hl.bind(
+	mainMod .. " + " .. "SHIFT" .. " + " .. "S",
+	hl.dsp.exec_cmd("kitty -e sh " .. os.getenv("HOME") .. "/minecraft-server/start.sh")
+)
 
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "Q", hl.dsp.exec_cmd(logout))
 
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "C", hl.dsp.exec_cmd("opencode"))
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "C", hl.dsp.exec_cmd("kitty -e opencode"))
 
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "A", hl.dsp.exec_cmd("fastfetch"))
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "A", hl.dsp.exec_cmd("kitty --hold fastfetch"))
 
 -- switching focus
 
@@ -122,6 +125,8 @@ hl.bind(mainMod .. " + code:172", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind(mainMod .. " + code:173", hl.dsp.exec_cmd("playerctl previous"))
 
 hl.bind(mainMod .. " + code:171", hl.dsp.exec_cmd("playerctl next"))
+
+hl.bind(mainMod .. " + " .. "CTRL" .. " + " .. "SPACE", hl.dsp.exec_cmd("splatmoji type"))
 
 -- windows
 
@@ -201,4 +206,5 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("swaync")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hypridle")
+	hl.exec_cmd("hyprpolkitagent")
 end)

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-layout=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | head -1)
+layout=$(hyprctl devices | grep -m1 -B 6 "main: yes" | grep "active keymap:" | sed 's/.*active keymap: //')
 case "$layout" in
   "English (US)") echo " US" ;;
   "Russian (phonetic)") echo " RU" ;;
