@@ -17,18 +17,12 @@ sudo pacman -Syu fastfetch hypridle hyprland hyprlock hyprpaper kitty nvim swayn
 #
 # sudo pacman -Syu wofi
 
-ln -sf fastfetch ~/.config
-
-ln -sf hypr ~/.config
-
-ln -sf kitty ~/.config
-
-ln -sf spicetify ~/.config
-
-ln -sf nvim ~/.config
-
-ln -sf swaync ~/.config
-
-ln -sf waybar ~/.config
-
-ln -sf wofi ~/.config
+ln -sf "$PWD/fastfetch" ~/.config
+ln -sf "$PWD/hypr" ~/.config
+ln -sf "$PWD/hypr" ~/.config
+ln -sf "$PWD/kitty" ~/.config
+ln -sf "$PWD/spicetify" ~/.config
+ln -sf "$PWD/nvim" ~/.config
+ln -sf "$PWD/swaync" ~/.config
+ln -sf "$PWD/waybar" ~/.config
+ln -sf "$PWD/wofi" ~/.config
