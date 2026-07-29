@@ -26,3 +26,4 @@ ln -sf "$PWD/nvim" ~/.config
 ln -sf "$PWD/swaync" ~/.config
 ln -sf "$PWD/waybar" ~/.config
 ln -sf "$PWD/wofi" ~/.config
+ln -sf "$PWD/starship.toml" ~/.config

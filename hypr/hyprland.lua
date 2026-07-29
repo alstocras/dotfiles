@@ -50,6 +50,8 @@ hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "C", hl.dsp.exec_cmd("kitty -e o
 
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "A", hl.dsp.exec_cmd("kitty --hold fastfetch"))
 
+hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("hyprpicker -a -f hex -l"))
+
 -- switching focus
 
 hl.bind(mainMod .. " + " .. "H", hl.dsp.focus({ direction = "left" }))
@@ -112,21 +114,38 @@ hl.bind(mainMod .. " + " .. "CTRL + SHIFT" .. " + " .. "S", hl.dsp.exec_cmd("hyp
 
 -- volume
 
--- hl.bind(mainMod .. " + " .. 123, hl.dsp.exec_cmd("pactl set-sink-volume 0 +5%"))
+hl.bind("code:123", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"))
 
--- hl.bind(mainMod .. " + " .. 122, hl.dsp.exec_cmd("pactl set-sink-volume 0 -5%"))
+hl.bind("code:122", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"))
 
--- hl.bind(mainMod .. " + " .. 121, hl.dsp.exec_cmd("amixer set Master 0%"))
+hl.bind("code:121", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+
+-- workspace scroll
+
+hl.bind(mainMod .. " + code:123", hl.dsp.exec_cmd("hyprctl dispatch workspace m+1"))
+
+hl.bind(mainMod .. " + code:122", hl.dsp.exec_cmd("hyprctl dispatch workspace m-1"))
 
 -- playback
 
-hl.bind(mainMod .. " + code:172", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind(mainMod .. " + " .. "F11", hl.dsp.exec_cmd("playerctl play-pause"))
 
-hl.bind(mainMod .. " + code:173", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind(mainMod .. " + " .. "F10", hl.dsp.exec_cmd("playerctl previous"))
 
-hl.bind(mainMod .. " + code:171", hl.dsp.exec_cmd("playerctl next"))
+hl.bind(mainMod .. " + " .. "F12", hl.dsp.exec_cmd("playerctl next"))
 
 hl.bind(mainMod .. " + " .. "CTRL" .. " + " .. "SPACE", hl.dsp.exec_cmd("splatmoji type"))
+
+-- updating
+hl.bind(mainMod .. " + " .. "CTRL + ALT" .. " + " .. "SPACE", hl.dsp.exec_cmd("kitty -e yay -Syu"))
+
+-- cursors
+
+hl.env("HYPRCURSOR_THEME", "BreezeX-Black")
+hl.env("HYPRCURSOR_SIZE", "32")
+
+hl.env("XCURSOR_THEME", "BreezeX-Black")
+hl.env("XCURSOR_SIZE", "32")
 
 -- windows
 
@@ -140,9 +159,9 @@ hl.window_rule({
 })
 ]]
 
--- hl.bind(mainMod .. " + " .. "mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + " .. "mouse:272", hl.dsp.window.drag(), { mouse = true })
 
--- hl.bind(mainMod .. " + " .. "mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(mainMod .. " + " .. "mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- niceness
 
@@ -194,8 +213,9 @@ hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "L", hl.dsp.exec_cmd("hyprlock")
 
 hl.config({
 	input = {
+		resolve_binds_by_sym = 1,
 		kb_layout = "us,ru",
-		kb_variant = ",phonetic",
+		kb_variant = "engrammer,phonetic",
 		kb_options = "grp:alt_shift_toggle,caps:escape",
 	},
 })
@@ -203,6 +223,7 @@ hl.config({
 -- Autostart
 hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
+	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("swaync")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("hypridle")
